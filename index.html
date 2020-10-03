@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/styles.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <title>Consultar Informações</title>
+</head>
+<body>
+     <div class = "container">
+         <h1>Filtrar Informações</h1>
+         <button onClick="busca()"> Buscar </button>   
+            <input  type ="checkbox"   name="Status" value="Contempladas" id="cont" class="valueCheckbox">
+              <label for="contempladas">Contempladas</label>
+              <input  type ="checkbox"  name="Status" value="Canceladas" id="canc" class="valueCheckbox">
+            <label for="canceladas">Canceladas</label>
+         <input  type ="checkbox"  name="Status" value="naoContempladas" id="ncont" class="valueCheckbox">
+        <label for="naoContempladas">Não Contempladas</label>
+    </div> 
+    <div class="container">
+      <table id="our-table">
+        <thead>
+          <tr class="first">
+            <th>Código</th>
+            <th>Administradora</th>
+            <th>Tipo</th>
+            <th>Contemplação</th>
+            <th>Valor da Carta</th>
+            <th>Total Pago</th>
+            <th>Dívida Restante</th>
+            <th>Total Dívida</th>
+            <th>Valor Parcela</th>
+            <th>Parcelas Devidas</th>
+
+          </tr>
+        </thead>
+        <tbody id="myTable">
+    
+        </tbody>
+      </table>
+    </div>
+    <script>
+      buildTable(tableData)
+        function buildTable(data){
+		      var table = document.getElementById('myTable')
+
+		       for (var i = 0; i < data.length; i++){
+			       var row = `<tr>
+                    <td>${tableData[i].Cód}</td>
+                    <td>${tableData[i].Administradora}</td>
+                    <td>${tableData[i].Tipo}</td>
+                    <td>${tableData[i].Contemplação}</td>
+                    <td>${tableData[i].ValorDaCarta}</td>
+                    <td>${tableData[i].TotalPago}</td>
+                    <td>${tableData[i].DívidaRestante}</td>
+                    <td>${tableData[i].TotalDívida}</td>
+                    <td>${tableData[i].ValorParcela}</td>
+                    <td>${tableData[i].parcelasDevidas}</td>
+					  </tr>`
+			    table.innerHTML += row
+		}
+  }
+
+  function busca(){   
+    var status = document.getElementsByName('Status');
+    for (var i = 0; i < status.length; i++){
+        if ( status[i].checked ) {
+            if(status[i].value == "Contempladas"){
+               alert('Contemplados');
+          
+            }else if (status[i].value == "Canceladas") {
+              alert('Canceladas');
+ 
+              
+            }else if (status[i].value == "naoContempladas") {
+               alert('Não Contemplados');
+                
+            }
+        }
+    }
+ }
+
+    </script>
+    
+     </body>
+</html>    
